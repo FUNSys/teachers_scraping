@@ -52,7 +52,7 @@ profiles = soup.find_all('div', attrs={'class':'profile'})
 
 teachers = []
 
-for profile in profiles:
+for profile in profiles[1:]:
 	position = profile.find(attrs={'class':'position'}).string
 	name = profile.find(attrs={'class':'name'}).string
 	roman = profile.find(attrs={'class':'roman'}).string
@@ -63,6 +63,7 @@ for profile in profiles:
 print "position,"+ "name,"+ "roman,"+ "rorle,"+ "research,"  # print scv headders
 
 for teacher in teachers:
+	# print teacher.name
 	teacher.print_csv()
 
 
