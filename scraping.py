@@ -30,6 +30,17 @@ class Teacher(object):
 		print "rorle: "+ self.role +', id: '+ str(self.roletoid(self.role))
 		print "research: "+ self.research
 
+	def print_scv_headder(self):
+		print "position,",
+		print "name,",
+		print "roman,",
+		print "rorle,",
+		print "research,",
+
+	def print_csv(self):
+		if self.name != u'--':
+			print self.position+ ","+ self.name+ ","+ self.roman+","+ self.role+","+ self.research
+
 
 inifile = ConfigParser.SafeConfigParser()
 inifile.read('./config.ini')
@@ -49,7 +60,9 @@ for profile in profiles:
 	research = profile.find(attrs={'class':'type'}).string
 	teachers.append(Teacher(position, name, roman, role, research))
 
+print "position,"+ "name,"+ "roman,"+ "rorle,"+ "research,"  # print scv headders
+
 for teacher in teachers:
-	teacher.print_all()
+	teacher.print_csv()
 
 
